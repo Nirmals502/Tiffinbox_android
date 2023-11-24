@@ -11,19 +11,34 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/TiffinBox"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Retrofi_implementation_"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.dashboard"
+            android:exported="false"
+            android:label="@string/title_activity_dashboard" />
+        <activity
+            android:name=".ui.otp_screen"
+            android:exported="false" />
+        <activity
+            android:name=".ui.setup_account"
+            android:exported="false"
+            android:label="@string/title_activity_setup_account"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.Welcome_screen"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:label="@string/TiffinBox">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.retrofi_implementation_"
-    compileSdk = 33
+    namespace = "com.example.TiffinBox"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.retrofi_implementation_"
+        applicationId = "com.example.TiffinBox"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
@@ -41,6 +41,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -68,6 +69,11 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.test:core-ktx:1.5.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+    implementation("androidx.annotation:annotation:1.7.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -75,6 +81,16 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    testImplementation ("io.mockk:mockk:1.12.0")
+    testImplementation("org.mockito:mockito-all:1.8.4")
+    testImplementation ("org.mockito:mockito-core:2.24.5")
+    testImplementation ("org.mockito:mockito-inline:2.24.5")
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
+
+
+
+
+
 
 //    val dagger_version = "2.41"
 //    implementation("com.google.dagger:dagger:$dagger_version")
@@ -102,9 +118,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
 
+    //Country picker
+    implementation ("com.hbb20:ccp:2.5.1")
 
-    implementation ("com.jakewharton:butterknife:10.2.3")
-    annotationProcessor ("com.jakewharton:butterknife-compiler:10.2.3")
+    implementation ("com.github.ozcanalasalvar:otpview:2.0.1")
+
+    //For view based UI's
+    implementation ("androidx.compose.material3:material3:Tag")
+
 
 
 }
