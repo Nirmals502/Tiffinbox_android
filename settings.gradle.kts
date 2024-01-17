@@ -16,6 +16,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Tiffibox"
+rootProject.name = "EasyTiffin"
 include(":app")
 

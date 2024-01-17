@@ -96,20 +96,28 @@
 
         app:defaultNavHost="true"
         app:layout_constraintEnd_toEndOf="@id/nav_view"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/slider_container"
         app:layout_constraintTop_toBottomOf="@+id/slider_container"
         app:navGraph="@navigation/mobile_navigation" />
 
     <RelativeLayout
         android:id="@+id/slider_container"
-        android:layout_width="409dp"
-        android:layout_height="164dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:iss_auto_cycle="true"
+            app:iss_delay="1000"
+            app:iss_period="1000"
+            app:iss_text_align="CENTER" />
 
     </RelativeLayout>
 

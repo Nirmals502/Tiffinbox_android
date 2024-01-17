@@ -1,5 +1,5 @@
 <resources>
-    <string name="TiffinBox">TiffinBox_</string>
+    <string name="TiffinBox">EasyTiffin</string>
     <string name="welcome">Welcome!</string>
     <string name="get_started">Get Started</string>
     <string name="welcome_Txt">Welcome to TiffinHub\n Where deliciousness meets convenience!</string>
@@ -85,4 +85,12 @@
     <string name="inbox">Inbox</string>
     <string name="account">Account</string>
     <string name="search">Search</string>
+    <string name="easytiffin">EasyTiffin</string>
+    <string name="business_name">Business Name</string>
+    <string name="enter_business_name">Enter Business Name</string>
+    <string name="business_address">Business Address</string>
+    <string name="enter_business_address">Enter Business Address</string>
+    <string name="gst_optional">GST (Optional)</string>
+    <string name="enter_gst">Enter GST</string>
+    <string name="register_business">Register Business</string>
 </resources>

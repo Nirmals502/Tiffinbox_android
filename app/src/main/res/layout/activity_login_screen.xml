@@ -5,7 +5,7 @@
     android:id="@+id/Cnst_layt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.TiffinBox.ui.Login_Screen">
+    tools:context="com.example.easy_tiffin.ui.LoginActivity">
 
 
     <Button

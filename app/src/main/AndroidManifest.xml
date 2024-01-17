@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".Application.Fakerapplication"
+        android:name="com.example.easy_tiffin.Application.Fakerapplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,29 +15,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:screenOrientation="portrait"
         tools:targetApi="31">
         <activity
-            android:name=".ui.dashboard"
+            android:name="com.example.easy_tiffin.ui.Register_business"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name="com.example.easy_tiffin.ui.Register"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name="com.example.easy_tiffin.ui.dashboard"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:label="@string/title_activity_dashboard" />
         <activity
-            android:name=".ui.otp_screen"
+            android:name="com.example.easy_tiffin.ui.otp_screen"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".ui.setup_account"
+            android:name="com.example.easy_tiffin.ui.setup_account"
             android:exported="false"
             android:label="@string/title_activity_setup_account"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name="com.example.easy_tiffin.ui.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.example.easy_tiffin.ui.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".ui.Welcome_screen"
+            android:name="com.example.easy_tiffin.ui.Welcome_screen"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:label="@string/TiffinBox">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,9 +61,19 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name="com.example.easy_tiffin.firebase_messaging_service.MyFirebaseMessagingService"
+
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

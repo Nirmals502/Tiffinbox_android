@@ -3,14 +3,15 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.TiffinBox"
+    namespace = "com.easy_tiffin"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.TiffinBox"
+        applicationId = "com.easy_tiffin"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
@@ -72,6 +73,18 @@ dependencies {
     implementation("androidx.test:core-ktx:1.5.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
+
+    //firebase
+    implementation("com.google.firebase:firebase-analytics:21.5.0")
+    implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation("com.google.firebase:firebase-firestore:24.10.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+
+    ////
+
+    implementation("com.github.leandroborgesferreira:loading-button-android:2.3.0")
+    implementation("com.google.firebase:firebase-messaging:23.4.0")
+
     testImplementation ("androidx.arch.core:core-testing:2.1.0")
     implementation("androidx.annotation:annotation:1.7.0")
     testImplementation("junit:junit:4.13.2")
