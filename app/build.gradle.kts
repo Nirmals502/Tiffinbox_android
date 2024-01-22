@@ -80,6 +80,8 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.10.0")
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
 
+    implementation ("com.google.android.libraries.places:places:2.5.0")
+
     ////
 
     implementation("com.github.leandroborgesferreira:loading-button-android:2.3.0")
@@ -99,6 +101,10 @@ dependencies {
     testImplementation ("org.mockito:mockito-core:2.24.5")
     testImplementation ("org.mockito:mockito-inline:2.24.5")
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
+
+    //stripe
+    implementation ("com.stripe:stripe-android:20.36.1")
+
 
 
 

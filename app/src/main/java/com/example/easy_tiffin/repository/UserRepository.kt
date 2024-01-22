@@ -75,7 +75,7 @@ class UserRepository(
                 throw Exception("Email already exists. Please verify this email.")
 
             } else {
-                throw Exception("Email already exists and has been verified. Please log in.")
+                throw Exception("Email already exists. Please log in.")
             }
 
 

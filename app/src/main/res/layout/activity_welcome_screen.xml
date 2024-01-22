@@ -60,7 +60,7 @@
         android:layout_marginBottom="44dp"
         android:background="@drawable/btn_roundcorner"
         android:text="@string/get_started"
-        android:textColor="@color/white"
+        android:textColor="@color/Button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

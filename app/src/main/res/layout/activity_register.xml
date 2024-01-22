@@ -38,13 +38,13 @@
             android:layout_marginEnd="20dp">
 
             <TextView
-                android:id="@+id/Edit"
+                android:id="@+id/Txt_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:text="Edit"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:visibility="gone" />
         </RelativeLayout>
@@ -73,9 +73,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="32dp"
-                android:text="EasyTiffin"
-                android:textColor="@color/black"
-                android:textSize="24sp"
+                android:text="Sign Up With Email"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -84,8 +84,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Full Name"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                 />
 
             <EditText
                 android:id="@+id/editTextFullName"
@@ -94,16 +95,19 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
                 android:hint="Enter Full Name"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:textColor="#F9F6F6"
+                android:textColorHint="#C0BCBC" />
 
             <TextView
                 android:id="@+id/textViewTitlePhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:textColor="@color/white"
                 android:text="Phone"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                 />
 
             <EditText
                 android:id="@+id/editTextPhone"
@@ -113,16 +117,19 @@
                 android:background="@drawable/round_corner"
                 android:hint="Enter Phone"
                 android:inputType="phone"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:textColor="#F9F6F6"
+                android:textColorHint="#C0BCBC" />
 
             <TextView
                 android:id="@+id/textViewTitleEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:textColor="@color/white"
                 android:text="Email"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                 />
 
             <EditText
                 android:id="@+id/editTextEmail"
@@ -132,7 +139,9 @@
                 android:background="@drawable/round_corner"
                 android:hint="Enter Email"
                 android:inputType="textEmailAddress"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:textColor="#F9F6F6"
+                android:textColorHint="#C0BCBC" />
 
             <TextView
                 android:id="@+id/textViewTitlePassword"
@@ -140,8 +149,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Password"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                 />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutPassword"
@@ -150,16 +160,19 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
                 app:endIconMode="password_toggle"
+                app:errorEnabled="true"
                 app:hintEnabled="false">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:padding="12dp"
                     android:background="@drawable/round_corner"
                     android:hint="Enter Password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:padding="12dp"
+                    android:textColor="#F9F6F6"
+                    android:textColorHint="#C0BCBC" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -168,8 +181,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Confirm Password"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                 />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutConfirmPassword"
@@ -183,10 +197,12 @@
                     android:id="@+id/editTextConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:padding="12dp"
                     android:background="@drawable/round_corner"
                     android:hint="Confirm Password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:padding="12dp"
+                    android:textColor="#F9F6F6"
+                    android:textColorHint="#C0BCBC" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Include other fields as needed -->
@@ -202,10 +218,10 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_roundcorner"
                     android:padding="16dp"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/Button_text" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar2"
+                    android:id="@+id/progressBar"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -11,9 +11,11 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.easy_tiffin.R
 import com.example.easy_tiffin.Network_Utils.NetworkUtils
+import com.example.easy_tiffin.Progress_bar.ProgressBarHandler
 import com.example.easy_tiffin.Shared_Preference.SharedPreferencesManager
 import com.example.easy_tiffin.factory.RegisterViewModelFactory
 import com.example.easy_tiffin.repository.UserRepository
@@ -32,6 +34,8 @@ class Register : AppCompatActivity() {
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     lateinit var phone: String
     lateinit var buttonRegister: Button
+    private lateinit var progressBarHandler: ProgressBarHandler
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +45,7 @@ class Register : AppCompatActivity() {
 
         val userRepository = UserRepository(auth, FirebaseFirestore.getInstance())
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this)
+        progressBarHandler = ProgressBarHandler(this)
 
         viewModel = ViewModelProvider(this, RegisterViewModelFactory(userRepository))
             .get(RegisterViewModel::class.java)
@@ -58,15 +63,16 @@ class Register : AppCompatActivity() {
                 sharedPreferencesManager.phone = phone
 
                 showSuccessSnackbar()
+                progressBarHandler.showLoading(false)
 
-                hideLoading()
+                //hideLoading()
 
                 if (buttonRegister.text != "Continue") {
                     // Only set the button text to "Continue" if it's not already set
                     buttonRegister.setText("Continue")
-                    findViewById<TextView>(R.id.Edit).visibility = View.VISIBLE
+                    findViewById<TextView>(R.id.Txt_edit).visibility = View.VISIBLE
                 }
-                findViewById<TextView>(R.id.Edit).visibility = View.VISIBLE
+                findViewById<TextView>(R.id.Txt_edit).visibility = View.VISIBLE
                 buttonRegister.isEnabled = true
 
             } else {
@@ -75,12 +81,22 @@ class Register : AppCompatActivity() {
                 findViewById<EditText>(R.id.editTextPhone).isEnabled = true
                 findViewById<EditText>(R.id.editTextEmail).isEnabled = true
                 findViewById<EditText>(R.id.editTextPassword).isEnabled = true
+                findViewById<EditText>(R.id.editTextConfirmPassword).isEnabled = false
+                val enabled_color = ContextCompat.getColor(this, R.color.white)
+                findViewById<EditText>(R.id.editTextFullName).setTextColor(enabled_color)
+                findViewById<EditText>(R.id.editTextPhone).setTextColor(enabled_color)
+                findViewById<EditText>(R.id.editTextEmail).setTextColor(enabled_color)
+                findViewById<EditText>(R.id.editTextPassword).setTextColor(enabled_color)
+                findViewById<EditText>(R.id.editTextConfirmPassword).setTextColor(enabled_color)
+                findViewById<TextView>(R.id.Txt_edit).visibility = View.GONE
+
 
                 // Enable the button
                 buttonRegister.isEnabled = true
 
                 buttonRegister.setText("Register")
-                hideLoading()
+                progressBarHandler.showLoading(false)
+                //hideLoading()
 
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             }
@@ -89,12 +105,19 @@ class Register : AppCompatActivity() {
 
         }
 
-        val textview =findViewById<TextView>(R.id.Edit)
+        val textview = findViewById<TextView>(R.id.Txt_edit)
         textview.setOnClickListener {
+            val enabled_color = ContextCompat.getColor(this, R.color.white)
             findViewById<EditText>(R.id.editTextFullName).isEnabled = true
             findViewById<EditText>(R.id.editTextPhone).isEnabled = true
             findViewById<EditText>(R.id.editTextEmail).isEnabled = true
             findViewById<EditText>(R.id.editTextPassword).isEnabled = true
+            findViewById<EditText>(R.id.editTextConfirmPassword).isEnabled = true
+            findViewById<EditText>(R.id.editTextFullName).setTextColor(enabled_color)
+            findViewById<EditText>(R.id.editTextPhone).setTextColor(enabled_color)
+            findViewById<EditText>(R.id.editTextEmail).setTextColor(enabled_color)
+            findViewById<EditText>(R.id.editTextPassword).setTextColor(enabled_color)
+            findViewById<EditText>(R.id.editTextConfirmPassword).setTextColor(enabled_color)
 
             // Enable the button
             buttonRegister.isEnabled = true
@@ -121,14 +144,16 @@ class Register : AppCompatActivity() {
                 if (user != null && user.isEmailVerified) {
                     // User is signed in and email is verified
                     buttonRegister.isEnabled = false
-                    showLoading()
+                    progressBarHandler.showLoading(true)
+                    //showLoading()
                     buttonRegister.setText("")
 
                     navigateToNextScreen()
                 } else {
                     // User is signed out or email is not verified
                     // You can handle this case as needed
-                    showLoading()
+                    //showLoading()
+                    progressBarHandler.showLoading(true)
                     buttonRegister.setText("")
                     showSuccessSnackbar()
                 }
@@ -137,41 +162,47 @@ class Register : AppCompatActivity() {
                 phone = findViewById<EditText>(R.id.editTextPhone).text.toString().trim()
                 val email = findViewById<EditText>(R.id.editTextEmail).text.toString().trim()
                 val password = findViewById<EditText>(R.id.editTextPassword).text.toString().trim()
-                val confirmPassword = findViewById<EditText>(R.id.editTextConfirmPassword).text.toString().trim()
+                val confirmPassword =
+                    findViewById<EditText>(R.id.editTextConfirmPassword).text.toString().trim()
 
 
                 if (fullName.isEmpty()) {
-                    Toast.makeText(this, "Full Name is required", Toast.LENGTH_SHORT).show()
+                    findViewById<EditText>(R.id.editTextFullName).setError("Full Name is required")
                     return@setOnClickListener
                 }
 
                 if (phone.isEmpty()) {
-                    Toast.makeText(this, "Phone number is required", Toast.LENGTH_SHORT).show()
+                    findViewById<EditText>(R.id.editTextPhone).setError("Phone number is required")
                     return@setOnClickListener
                 }
 
                 if (email.isEmpty()) {
-                    Toast.makeText(this, "Email is required", Toast.LENGTH_SHORT).show()
+                    findViewById<EditText>(R.id.editTextEmail).setError("Email is required")
+                    //Toast.makeText(this, "Email is required", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
                 if (password.isEmpty()) {
+                    // findViewById<EditText>(R.id.editTextPassword).
                     Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
                 if (confirmPassword.isEmpty()) {
+                    //findViewById<EditText>(R.id.editTextConfirmPassword).setError("Confirm Password is required")
                     Toast.makeText(this, "Confirm Password is required", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
 
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
+                    findViewById<EditText>(R.id.editTextEmail).setError("Invalid email")
+                    //Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
                 if (password.length < 6) {
+                    //findViewById<EditText>(R.id.editTextPassword).setError("Password should be at least 6 characters")
                     Toast.makeText(
                         this,
                         "Password should be at least 6 characters",
@@ -181,20 +212,32 @@ class Register : AppCompatActivity() {
                     return@setOnClickListener
                 }
                 if (password != confirmPassword) {
-                    Toast.makeText(this, "Password and Confirm Password do not match", Toast.LENGTH_SHORT).show()
+                    //findViewById<EditText>(R.id.editTextPassword).setError("Password and Confirm Password do not match")
+                    Toast.makeText(
+                        this,
+                        "Password and Confirm Password do not match",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    // findViewById<EditText>(R.id.editTextConfirmPassword).setError("Password and Confirm Password do not match")
                     return@setOnClickListener
                 }
-                val currentDateTime = System.currentTimeMillis()
-                val currentDate = Date(currentDateTime)
-                // Show the progress bar while registering
 
+                // Show the progress bar while registering
+                val disableTextColor = ContextCompat.getColor(this, R.color.disable_text)
                 viewModel.registerUser(fullName, phone, email, password)
                 findViewById<EditText>(R.id.editTextFullName).isEnabled = false
                 findViewById<EditText>(R.id.editTextPhone).isEnabled = false
                 findViewById<EditText>(R.id.editTextEmail).isEnabled = false
                 findViewById<EditText>(R.id.editTextPassword).isEnabled = false
+                findViewById<EditText>(R.id.editTextConfirmPassword).isEnabled = false
+                findViewById<EditText>(R.id.editTextFullName).setTextColor(disableTextColor)
+                findViewById<EditText>(R.id.editTextPhone).setTextColor(disableTextColor)
+                findViewById<EditText>(R.id.editTextEmail).setTextColor(disableTextColor)
+                findViewById<EditText>(R.id.editTextPassword).setTextColor(disableTextColor)
+                findViewById<EditText>(R.id.editTextConfirmPassword).setTextColor(disableTextColor)
                 buttonRegister.isEnabled = false
-                showLoading()
+                //showLoading()
+                progressBarHandler.showLoading(true)
                 buttonRegister.setText("")
 
             }
@@ -204,7 +247,8 @@ class Register : AppCompatActivity() {
     }
 
     private fun showSuccessSnackbar() {
-        hideLoading()
+        //hideLoading()
+        progressBarHandler.showLoading(false)
         buttonRegister.setText("Continue")
         val snackbar = Snackbar.make(
             findViewById(android.R.id.content),
@@ -218,15 +262,5 @@ class Register : AppCompatActivity() {
 
         Navigator.navigateTo(Register_business::class.java, this, finishCurrent = true)
 
-    }
-
-    private fun showLoading() {
-        // Show loading indicator
-        findViewById<ProgressBar>(R.id.progressBar2).visibility = View.VISIBLE
-    }
-
-    private fun hideLoading() {
-        // Hide loading indicator
-        findViewById<ProgressBar>(R.id.progressBar2).visibility = View.GONE
     }
 }

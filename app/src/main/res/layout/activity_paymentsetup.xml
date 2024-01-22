@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context="com.example.easy_tiffin.ui.Register_business">
+    tools:context="com.example.easy_tiffin.ui.paymentsetup">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -51,83 +50,120 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Bank Name -->
             <TextView
-                android:id="@+id/textViewTitleBusinessName"
+                android:id="@+id/textViewBankName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/business_name"
+                android:text="Bank Name"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editTextBusinessName"
+                android:id="@+id/editTextBankName"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
-                android:hint="@string/enter_business_name"
+                android:hint="Enter Bank Name"
+                android:padding="12dp"
+                android:textColor="@color/edit_text_color"
+                android:textColorHint="@color/edit_hint_color" />
+
+            <!-- Account Holder Name -->
+            <TextView
+                android:id="@+id/textViewAccountHolderName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Account Holder Name"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextAccountHolderName"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/round_corner"
+                android:hint="Enter Account Holder Name"
+                android:padding="12dp"
+                android:textColor="@color/edit_text_color"
+                android:textColorHint="@color/edit_hint_color" />
+
+            <!-- Account Number -->
+            <TextView
+                android:id="@+id/textViewAccountNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Account Number"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextAccountNumber"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/round_corner"
+                android:hint="Enter Account Number"
+                android:inputType="number"
                 android:padding="12dp"
                 android:textColor="@color/edit_text_color"
                 android:textColorHint="@color/edit_hint_color" />
 
             <TextView
-                android:id="@+id/textViewTitleBusinessAddress"
+                android:id="@+id/textViewConfirmAccountNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/business_address"
+                android:text="Confirm Account Number"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextViewStreet"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/round_corner"
-                android:hint="Enter your address"
-                android:padding="12dp"
-                android:autofillHints="streetAddress"
-                android:maxLines="1"
-                android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color"/>
-
             <EditText
-                android:id="@+id/apt_unit"
+                android:id="@+id/editTextConfirmAccountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
-                android:hint="Add Apt / Unit Number"
+                android:hint="Confirm Account Number"
+                android:inputType="number"
                 android:padding="12dp"
-                android:autofillHints="addressCity"
                 android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color"/>
+                android:textColorHint="@color/edit_hint_color" />
 
+
+            <!-- Branch/Transit Number -->
             <TextView
-                android:id="@+id/textViewTitleGST"
+                android:id="@+id/textViewBranchNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/gst_optional"
+                android:text="Branch/Transit Number"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editTextGST"
+                android:id="@+id/editTextBranchNumber"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
+                android:hint="Enter Branch/Transit Number"
+                android:inputType="number"
+                android:padding="12dp"
                 android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color"
-                android:hint="@string/enter_gst"
-                android:padding="12dp" />
+                android:textColorHint="@color/edit_hint_color" />
 
+            <!-- Register Bank Details Button -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,12 +171,11 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/button_Register_buisiness"
+                    android:id="@+id/buttonRegisterBankDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_roundcorner"
-
-                    android:text="Register Business Detail"
+                    android:text="Register Bank Details"
                     android:textColor="@color/Button_text" />
 
                 <ProgressBar
