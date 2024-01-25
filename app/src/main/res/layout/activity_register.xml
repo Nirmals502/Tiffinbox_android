@@ -85,13 +85,12 @@
                 android:layout_marginBottom="8dp"
                 android:text="Full Name"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                 />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editTextFullName"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
                 android:hint="Enter Full Name"
@@ -104,15 +103,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textColor="@color/white"
                 android:text="Phone"
-                android:textSize="18sp"
-                 />
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editTextPhone"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
                 android:hint="Enter Phone"
@@ -126,15 +124,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textColor="@color/white"
                 android:text="Email"
-                android:textSize="18sp"
-                 />
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
                 android:hint="Enter Email"
@@ -150,8 +147,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="Password"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                 />
+                android:textSize="16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutPassword"
@@ -166,7 +162,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/round_corner"
                     android:hint="Enter Password"
                     android:inputType="textPassword"
@@ -182,8 +178,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="Confirm Password"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                 />
+                android:textSize="16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutConfirmPassword"
@@ -196,7 +191,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/editTextConfirmPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/round_corner"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
@@ -217,7 +212,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_roundcorner"
-                    android:padding="16dp"
+                    android:contentDescription="@string/register_button"
                     android:textColor="@color/Button_text" />
 
                 <ProgressBar

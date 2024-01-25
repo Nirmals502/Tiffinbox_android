@@ -18,8 +18,11 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name="com.example.easy_tiffin.ui.paymentsetup"
-            android:exported="false" />
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+
         <activity
             android:name="com.example.easy_tiffin.ui.Register_business"
             android:exported="false"
@@ -62,6 +65,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
 
         <service
@@ -72,12 +77,24 @@
             </intent-filter>
         </service>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+<!--        <meta-data-->
+<!--            android:name="preloaded_fonts"-->
+<!--            android:resource="@array/preloaded_fonts" />-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAZMarInlXG_LqfIwq6ffIFEfQQ0tFkhKU" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
+
     </application>
+
+
+
+
+
 
 </manifest>

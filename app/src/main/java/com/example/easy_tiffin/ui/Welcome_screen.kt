@@ -1,10 +1,10 @@
 package com.example.easy_tiffin.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.easy_tiffin.R
+import com.example.easy_tiffin.navigator.Navigator
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
@@ -24,7 +24,7 @@ class Welcome_screen : AppCompatActivity() {
         Buttn_Get_started.setOnClickListener {
 
 
-            Navigator.navigateTo(Register::class.java, this, finishCurrent = true)
+            Navigator.navigateTo(LoginActivity::class.java, this, finishCurrent = true)
 
 
         }

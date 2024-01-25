@@ -9,34 +9,59 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.EditText
+import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
 import com.easy_tiffin.R
 import com.easy_tiffin.databinding.ActivityLoginBinding
 import com.example.easy_tiffin.Models.LoggedInUserView
+import com.example.easy_tiffin.Progress_bar.ProgressBarHandler
+import com.example.easy_tiffin.Shared_Preference.SharedPreferencesManager
+import com.example.easy_tiffin.facebook.FacebookHandler
 
 import com.example.easy_tiffin.viewModel.LoginViewModel
 import com.example.easy_tiffin.factory.LoginViewModelFactory
+import com.example.easy_tiffin.navigator.Navigator
+import com.example.easy_tiffin.repository.LoginRepository
+
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var progressBarHandler: ProgressBarHandler
+    private lateinit var sharedPreferencesManager: SharedPreferencesManager
+    private lateinit var facebookHandler: FacebookHandler
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        FirebaseApp.initializeApp(this)
+        auth = FirebaseAuth.getInstance()
+        progressBarHandler = ProgressBarHandler(this)
+        val LoginRepository = LoginRepository(auth)
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this)
+        facebookHandler = FacebookHandler(this)
+
 
         val username = binding.editTextTextEmailAddress
         val password = binding.appCompatEditText
-        val login = binding.BtnSignin
-        val loading = binding.progressBar
+        val login = binding.btnSignin
+        val facebook = binding.imgFb
+        facebook.setOnClickListener {
+            facebookHandler.performLogin()
 
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
+        }
+        //val loading = binding.progressBar
+        val create_account = binding.txtContainer
+
+        loginViewModel = ViewModelProvider(this, LoginViewModelFactory(LoginRepository))
             .get(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
@@ -49,14 +74,14 @@ class LoginActivity : AppCompatActivity() {
                 username.error = getString(loginState.usernameError)
             }
             if (loginState.passwordError != null) {
-                password.error = getString(loginState.passwordError)
+                // password.error = getString(loginState.passwordError)
             }
         })
 
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
 
-            loading.visibility = View.GONE
+            progressBarHandler.showLoading(false)
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
@@ -69,51 +94,72 @@ class LoginActivity : AppCompatActivity() {
             //finish()
         })
 
-        username.afterTextChanged {
-            loginViewModel.loginDataChanged(
-                username.text.toString(),
-                password.text.toString()
-            )
+
+        login.setOnClickListener {
+            //loading.visibility = View.VISIBLE
+            if (username.text.isEmpty()) {
+                username.setError("Email is required")
+                return@setOnClickListener
+            }
+
+
+            if (!Patterns.EMAIL_ADDRESS.matcher(username.text).matches()) {
+                username.setError("Invalid email")
+                //Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (password.text.isNullOrEmpty()) {
+                //password.setError("Password is required")
+                Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            progressBarHandler.showLoading(true)
+
+            loginViewModel.login(username.text.toString().trim(), password.text.toString().trim())
+//                val intent = Intent(this@LoginActivity, setup_account::class.java)
+//                startActivity(intent)
+//                finish()
         }
 
-        password.apply {
-            afterTextChanged {
-                loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
-                )
-            }
-
-            setOnEditorActionListener { _, actionId, _ ->
-                when (actionId) {
-                    EditorInfo.IME_ACTION_DONE ->
-                        loginViewModel.login(
-                            username.text.toString(),
-                            password.text.toString()
-                        )
-                }
-                false
-            }
-
-            login.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                // loginViewModel.login(username.text.toString(), password.text.toString())
-                val intent = Intent(this@LoginActivity, setup_account::class.java)
-                startActivity(intent)
-                finish()
-            }
+        create_account.setOnClickListener {
+            navigateToNextScreen()
         }
+
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        //facebookHandler.handleLoginResult(requestCode, resultCode, data)
+        facebookHandler.handleLoginResult(requestCode, resultCode, data) { email, accessToken ->
+            // Handle the obtained email and accessToken as needed
+            Log.d("FacebookLogin", "Email in LoginActivity: $email")
+            Log.d("FacebookLogin", "Access Token in LoginActivity: $accessToken")
+        }
+
+        // facebookHandler.fetchUserDetails()
+
+        // printEmailAndToken()
+    }
+
+    private fun navigateToNextScreen() {
+
+        Navigator.navigateTo(Register::class.java, this, finishCurrent = true)
+
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
+        sharedPreferencesManager.setUserId(auth.currentUser?.uid.toString())
+
         // TODO : initiate successful logged in experience
         Toast.makeText(
             applicationContext,
-            "$welcome $displayName",
+            "Success",
             Toast.LENGTH_LONG
         ).show()
+        Navigator.navigateTo(dashboard::class.java, this, finishCurrent = true)
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
@@ -121,17 +167,7 @@ class LoginActivity : AppCompatActivity() {
     }
 }
 
-/**
- * Extension function to simplify setting an afterTextChanged action to EditText components.
- */
-fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(editable: Editable?) {
-            afterTextChanged.invoke(editable.toString())
-        }
 
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-    })
-}
+
+

@@ -94,4 +94,11 @@
     <string name="gst_optional">GST (Optional)</string>
     <string name="enter_gst">Enter GST</string>
     <string name="register_business">Register Business</string>
+    <string name="register_button">Register button</string>
+
+    <string name="facebook_app_id">1803877026707703</string>
+    <string name="fb_login_protocol_scheme">1803877026707703</string>
+    <string name="facebook_client_token">0127e43be527f999077e43f290f3942c</string>
+
+
 </resources>

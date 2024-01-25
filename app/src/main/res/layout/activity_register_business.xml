@@ -58,13 +58,13 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/business_name"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextBusinessName"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
                 android:hint="@string/enter_business_name"
@@ -79,33 +79,33 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/business_address"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextViewStreet"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:autofillHints="streetAddress"
                 android:background="@drawable/round_corner"
                 android:hint="Enter your address"
-                android:padding="12dp"
-                android:autofillHints="streetAddress"
                 android:maxLines="1"
+                android:padding="12dp"
                 android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color"/>
+                android:textColorHint="@color/edit_hint_color" />
 
             <EditText
                 android:id="@+id/apt_unit"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:autofillHints="addressCity"
                 android:background="@drawable/round_corner"
                 android:hint="Add Apt / Unit Number"
                 android:padding="12dp"
-                android:autofillHints="addressCity"
                 android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color"/>
+                android:textColorHint="@color/edit_hint_color" />
 
             <TextView
                 android:id="@+id/textViewTitleGST"
@@ -114,19 +114,19 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/gst_optional"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextGST"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
-                android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color"
                 android:hint="@string/enter_gst"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:textColor="@color/edit_text_color"
+                android:textColorHint="@color/edit_hint_color" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

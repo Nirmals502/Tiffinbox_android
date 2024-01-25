@@ -1,4 +1,4 @@
-package com.example.easy_tiffin.ui
+package com.example.easy_tiffin.navigator
 
 import android.app.ActivityOptions
 import android.content.Context
@@ -18,7 +18,8 @@ object Navigator {
         } else {
             context.startActivity(intent)
             if (context is AppCompatActivity) {
-                context.overridePendingTransition(R.animator.slide_in_right, R.animator.slide_out_left)
+                context.overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right)
+                context.finish()
             }
         }
     }

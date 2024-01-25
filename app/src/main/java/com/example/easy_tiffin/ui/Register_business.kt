@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.easy_tiffin.Shared_Preference.SharedPreferencesManager
 import com.example.easy_tiffin.Time_stamp.TimestampFormatter
+import com.example.easy_tiffin.navigator.Navigator
 
 class Register_business : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -46,6 +48,12 @@ class Register_business : AppCompatActivity() {
         locationPredictor = LocationPredictor(placesClient)
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this)
         progressBarHandler = ProgressBarHandler(this)
+        val imageViewBack = findViewById<ImageView>(R.id.imageViewBack)
+
+        imageViewBack.setOnClickListener {
+            // Finish the current activity on back arrow click
+            navigateToPreviousScreen()
+        }
 
 
         // Initialize ViewModel and Repository
@@ -62,8 +70,8 @@ class Register_business : AppCompatActivity() {
         val aptUnit: EditText = findViewById(R.id.apt_unit)
 
         // Retrieve user id and phone from SharedPreferences
-        val userId = sharedPreferencesManager.userId
-        val phone = sharedPreferencesManager.phone
+        val userId = sharedPreferencesManager.getUserId()
+        val phone = sharedPreferencesManager.getPhone()
 
         // Register business button click listener
         buttonRegisterBusiness.setOnClickListener {
@@ -125,6 +133,7 @@ class Register_business : AppCompatActivity() {
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 buttonRegisterBusiness.setText("Register Business Detail")
                 progressBarHandler.showLoading(false)
+                navigateToNextScreen()
 //                hideLoading()
                 // Handle success, navigate to the next screen if needed
                 // For example:
@@ -144,6 +153,14 @@ class Register_business : AppCompatActivity() {
         this.placeId = placeId
     }
 
+    private fun navigateToPreviousScreen() {
 
+        Navigator.navigateTo(LoginActivity::class.java, this, finishCurrent = false)
 
+    }
+    private fun navigateToNextScreen() {
+
+        Navigator.navigateTo(dashboard::class.java, this, finishCurrent = true)
+
+    }
 }

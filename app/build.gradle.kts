@@ -145,6 +145,10 @@ dependencies {
     //For view based UI's
     implementation ("androidx.compose.material3:material3:Tag")
 
+    //Facebook
+    implementation ("com.facebook.android:facebook-login:latest.release")
+
+
 
 
 }

@@ -7,7 +7,7 @@ import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +18,7 @@ import com.example.easy_tiffin.Network_Utils.NetworkUtils
 import com.example.easy_tiffin.Progress_bar.ProgressBarHandler
 import com.example.easy_tiffin.Shared_Preference.SharedPreferencesManager
 import com.example.easy_tiffin.factory.RegisterViewModelFactory
+import com.example.easy_tiffin.navigator.Navigator
 import com.example.easy_tiffin.repository.UserRepository
 import com.example.easy_tiffin.viewModel.RegisterViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -25,7 +26,6 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.Date
 
 class Register : AppCompatActivity() {
 
@@ -50,6 +50,12 @@ class Register : AppCompatActivity() {
         viewModel = ViewModelProvider(this, RegisterViewModelFactory(userRepository))
             .get(RegisterViewModel::class.java)
         buttonRegister = findViewById(R.id.buttonRegister)
+        val imageViewBack = findViewById<ImageView>(R.id.imageViewBack)
+        imageViewBack.setOnClickListener {
+             // Finish the current activity on back arrow click
+            navigateToPreviousScreen()
+        }
+
         buttonRegister.setText("Register")
 
 
@@ -59,8 +65,8 @@ class Register : AppCompatActivity() {
             val (success, message) = registrationResult
             if (success) {
                 // Registration successful, navigate to another screen or perform actions
-                sharedPreferencesManager.userId = auth.currentUser?.uid
-                sharedPreferencesManager.phone = phone
+                sharedPreferencesManager.setUserId(auth.currentUser?.uid.toString())
+                sharedPreferencesManager.setPhone(phone)
 
                 showSuccessSnackbar()
                 progressBarHandler.showLoading(false)
@@ -261,6 +267,12 @@ class Register : AppCompatActivity() {
     private fun navigateToNextScreen() {
 
         Navigator.navigateTo(Register_business::class.java, this, finishCurrent = true)
+
+    }
+
+    private fun navigateToPreviousScreen() {
+
+        Navigator.navigateTo(LoginActivity::class.java, this, finishCurrent = false)
 
     }
 }
