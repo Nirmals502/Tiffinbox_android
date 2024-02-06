@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context="com.example.easy_tiffin.ui.LoginActivity">
+    tools:context="com.example.easy_tiffin.ui.login.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/Btn_Signin"
@@ -133,6 +133,8 @@
         android:text="@string/forgot_password"
         android:textColor="@color/white"
         android:textSize="14sp"
+        android:foreground="?android:attr/selectableItemBackground"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
@@ -159,6 +161,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:foreground="?android:attr/selectableItemBackground"
+
         app:srcCompat="@drawable/facebook_icon_xxhdpi" />
 
     <ImageView
@@ -169,6 +173,8 @@
         app:layout_constraintEnd_toStartOf="@+id/img_fb"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:foreground="?android:attr/selectableItemBackground"
+
         app:layout_constraintTop_toTopOf="@+id/img_fb"
         app:srcCompat="@drawable/google_icon" />
 
@@ -178,6 +184,8 @@
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         app:layout_constraintStart_toEndOf="@+id/img_fb"
+        android:foreground="?android:attr/selectableItemBackground"
+
         app:layout_constraintTop_toTopOf="@+id/img_fb"
         app:srcCompat="@drawable/apple_" />
 
@@ -200,6 +208,8 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:foreground="?android:attr/selectableItemBackground"
+
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView

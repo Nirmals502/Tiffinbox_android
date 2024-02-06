@@ -1,7 +1,11 @@
 package com.example.easy_tiffin.di
 
-import com.example.easy_tiffin.Retrofit.FakerApi
+import android.app.Application
+import android.content.Context
+import com.example.easy_tiffin.Retrofit.firabse_funtion
+import com.example.easy_tiffin.Shared_Preference.SharedPreferencesManager
 import com.example.easy_tiffin.utils.Constant
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,8 +25,22 @@ class NetworkModule {
     }
     @Singleton
     @Provides
-    fun providesFakerApi(retrofit: Retrofit): FakerApi {
-        return retrofit.create(FakerApi::class.java)
+    fun providesFirebaseFunction(retrofit: Retrofit): firabse_funtion {
+        return retrofit.create(firabse_funtion::class.java)
     }
-
+    @Singleton
+    @Provides
+    fun provideFirebaseAuth(): FirebaseAuth {
+        return FirebaseAuth.getInstance()
+    }
+    @Singleton
+    @Provides
+    fun provideSharedPreferencesManager(application: Application): SharedPreferencesManager {
+        return SharedPreferencesManager.getInstance(application)
+    }
+    @Singleton
+    @Provides
+    fun provideContext(application: Application): Context {
+        return application.applicationContext
+    }
 }

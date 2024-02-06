@@ -6,12 +6,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.example.easy_tiffin.Application.Fakerapplication"
+        android:name="com.example.easy_tiffin.Application.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/TiffinBox"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
@@ -24,41 +24,45 @@
 
 
         <activity
-            android:name="com.example.easy_tiffin.ui.Register_business"
+            android:name="com.example.easy_tiffin.ui.register_business.Register_business"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.easy_tiffin.ui.Register"
+            android:name="com.example.easy_tiffin.ui.stripe_setup.PaymentSetupActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.easy_tiffin.ui.dashboard"
+            android:name="com.example.easy_tiffin.ui.register.Register"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.easy_tiffin.ui.ui.dashboard.dashboard"
             android:exported="false"
             android:label="@string/title_activity_dashboard"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.easy_tiffin.ui.otp_screen"
+            android:name="com.example.easy_tiffin.ui.otp.otp_screen"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.easy_tiffin.ui.setup_account"
+            android:name="com.example.easy_tiffin.ui.setup_account_.setup_account"
             android:exported="false"
             android:label="@string/title_activity_setup_account"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.example.easy_tiffin.ui.LoginActivity"
+            android:name="com.example.easy_tiffin.ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.easy_tiffin.ui.MainActivity"
+            android:name="com.example.easy_tiffin.ui.mainactivity.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.easy_tiffin.ui.Welcome_screen"
+            android:name="com.example.easy_tiffin.ui.welcome.Welcome_screen"
             android:exported="true"
-            android:label="@string/TiffinBox"
+            android:label="@string/easytiffin"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -77,9 +81,9 @@
             </intent-filter>
         </service>
 
-<!--        <meta-data-->
-<!--            android:name="preloaded_fonts"-->
-<!--            android:resource="@array/preloaded_fonts" />-->
+        <!--        <meta-data-->
+        <!--            android:name="preloaded_fonts"-->
+        <!--            android:resource="@array/preloaded_fonts" />-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAZMarInlXG_LqfIwq6ffIFEfQQ0tFkhKU" />
@@ -87,14 +91,12 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
 
 
     </application>
-
-
-
-
 
 
 </manifest>

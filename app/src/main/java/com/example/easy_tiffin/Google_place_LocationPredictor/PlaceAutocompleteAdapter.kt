@@ -1,6 +1,6 @@
 package com.example.easy_tiffin.adapter
 import android.widget.ArrayAdapter
-import com.example.easy_tiffin.ui.Register_business
+import com.example.easy_tiffin.ui.register_business.Register_business
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.model.RectangularBounds
 import com.google.android.libraries.places.api.model.TypeFilter

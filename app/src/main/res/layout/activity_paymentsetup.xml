@@ -51,26 +51,7 @@
             android:padding="16dp">
 
             <!-- Bank Name -->
-            <TextView
-                android:id="@+id/textViewBankName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Bank Name"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextBankName"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/round_corner"
-                android:hint="Enter Bank Name"
-                android:padding="12dp"
-                android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color" />
 
             <!-- Account Holder Name -->
             <TextView
@@ -86,7 +67,7 @@
             <EditText
                 android:id="@+id/editTextAccountHolderName"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/round_corner"
                 android:hint="Enter Account Holder Name"
@@ -105,39 +86,62 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextAccountNumber"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_accountnumber"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/round_corner"
-                android:hint="Enter Account Number"
-                android:inputType="number"
-                android:padding="12dp"
-                android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color" />
+                app:endIconMode="password_toggle"
+                app:errorEnabled="false"
+                app:hintEnabled="false">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextAccountNumber"
+                    inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/round_corner"
+                    android:hint="Enter Account Number"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:padding="12dp"
+                    android:textColor="#F9F6F6"
+                    android:textColorHint="#C0BCBC" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/textViewConfirmAccountNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Confirm Account Number"
+                android:text="Transit number"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextConfirmAccountNumber"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputTransit_number"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/round_corner"
-                android:hint="Confirm Account Number"
-                android:inputType="number"
-                android:padding="12dp"
-                android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color" />
+                app:endIconMode="password_toggle"
+                app:errorEnabled="false"
+                app:hintEnabled="false">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/transit_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner"
+                    android:hint="Enter Transit number"
+                    android:inputType="number"
+                    android:padding="12dp"
+                    android:maxLength="5"
+                    android:textColor="#F9F6F6"
+                    android:textColorHint="#C0BCBC" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
 
             <!-- Branch/Transit Number -->
@@ -146,22 +150,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Branch/Transit Number"
+                android:text="Financial institution number"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextBranchNumber"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputBranch_number"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/round_corner"
-                android:hint="Enter Branch/Transit Number"
-                android:inputType="number"
-                android:padding="12dp"
-                android:textColor="@color/edit_text_color"
-                android:textColorHint="@color/edit_hint_color" />
+                app:endIconMode="password_toggle"
+                app:errorEnabled="false"
+                app:hintEnabled="false">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/institute_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner"
+                    android:hint="Enter Financial institution number"
+                    android:inputType="number"
+                    android:padding="12dp"
+                    android:textColor="#F9F6F6"
+                    android:maxLength="3"
+                    android:textColorHint="#C0BCBC" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <!-- Register Bank Details Button -->
             <RelativeLayout

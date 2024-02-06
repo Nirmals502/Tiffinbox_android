@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -86,6 +87,8 @@ dependencies {
 
     implementation("com.github.leandroborgesferreira:loading-button-android:2.3.0")
     implementation("com.google.firebase:firebase-messaging:23.4.0")
+    implementation("com.google.firebase:firebase-crashlytics:18.6.1")
+    implementation("com.google.firebase:firebase-functions-ktx:20.4.0")
 
     testImplementation ("androidx.arch.core:core-testing:2.1.0")
     implementation("androidx.annotation:annotation:1.7.0")
@@ -103,7 +106,7 @@ dependencies {
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
 
     //stripe
-    implementation ("com.stripe:stripe-android:20.36.1")
+    implementation ("com.stripe:stripe-android:20.37.1")
 
 
 
@@ -147,6 +150,15 @@ dependencies {
 
     //Facebook
     implementation ("com.facebook.android:facebook-login:latest.release")
+
+//unit Testing
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("org.mockito:mockito-core:5.10.0")
+    testImplementation ("org.mockito.kotlin:mockito-kotlin:4.0.0") // use the latest version
+
+    testImplementation ("org.mockito:mockito-inline:4.5.1")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+    testImplementation ("org.robolectric:robolectric:4.11.1") // use the latest version
 
 
 
