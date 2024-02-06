@@ -3,7 +3,6 @@ package com.example.easy_tiffin.facebook
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
@@ -41,12 +40,14 @@ class FacebookHandler(private val activity: Activity) {
         FacebookSdk.sdkInitialize(activity.applicationContext)
         AppEventsLogger.activateApp(activity.application)
         // Register callback with the LoginManager
-        com.facebook.login.LoginManager.getInstance().registerCallback(callbackManager, facebookCallback)
+        com.facebook.login.LoginManager.getInstance()
+            .registerCallback(callbackManager, facebookCallback)
     }
 
     // Start Facebook login
     fun performLogin() {
-        com.facebook.login.LoginManager.getInstance().logInWithReadPermissions(activity, listOf("email"))
+        com.facebook.login.LoginManager.getInstance()
+            .logInWithReadPermissions(activity, listOf("email", "public_profile"))
     }
 
     // Handle Facebook login result (call this in onActivityResult of your Activity)
@@ -54,18 +55,18 @@ class FacebookHandler(private val activity: Activity) {
         requestCode: Int,
         resultCode: Int,
         data: Intent?,
-        callback: (email: String?, accessToken: String?) -> Unit
+        callback: (email: String?, accessToken: String?, name: String?) -> Unit
     ) {
         callbackManager.onActivityResult(requestCode, resultCode, data)
         val accessToken = AccessToken.getCurrentAccessToken()
 
         if (accessToken != null && !accessToken.isExpired) {
             // Access token is valid
-            fetchEmailFromGraphAPI(accessToken) { email ->
-                callback.invoke(email, accessToken.token)
+            fetchEmailFromGraphAPI(accessToken) { email, name ->
+                callback.invoke(email, accessToken.token, name)
             }
         } else {
-            callback.invoke(null, null)
+            callback.invoke(null, null, null)
         }
     }
 
@@ -81,24 +82,28 @@ class FacebookHandler(private val activity: Activity) {
     }
 
     // Inside your FacebookHandler class
-    private fun fetchEmailFromGraphAPI(accessToken: AccessToken, callback: (String) -> Unit) {
+    private fun fetchEmailFromGraphAPI(
+        accessToken: AccessToken,
+        callback: (String?, String?) -> Unit
+    ) {
         // Use Graph API to fetch user details including email
         val request = GraphRequest.newMeRequest(accessToken) { json, response ->
             if (json != null) {
                 // Parse the JSON object to get user details
                 val email = json.optString("email", "")
-                // Call the callback function with the email
-                callback.invoke(email)
+                val name = json.optString("name", "")
+
+                // Call the callback function with the email and name
+                callback.invoke(email, name)
             }
         }
 
         // Set parameters for the Graph API request
         val parameters = Bundle()
-        parameters.putString("fields", "email")
+        parameters.putString("fields", "email,name")
         request.parameters = parameters
 
         // Execute the Graph API request asynchronously
         request.executeAsync()
     }
-
 }

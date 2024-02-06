@@ -27,13 +27,6 @@ class SharedPreferencesManager private constructor(context: Context) {
         }
     }
 
-//    var userId: String?
-//        get() = sharedPreferences.getString(KEY_USER_ID, null)
-//        set(value) = sharedPreferences.edit().putString(KEY_USER_ID, value).apply()
-//
-//    var phone: String?
-//        get() = sharedPreferences.getString(KEY_PHONE, null)
-//        set(value) = sharedPreferences.edit().putString(KEY_PHONE, value).apply()
 
     fun saveVerificationId(verificationId: String) {
         val encryptedVerificationId = encryptVerificationId(verificationId)
