@@ -10,6 +10,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -17,27 +19,37 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
+
     @Singleton
     @Provides
     fun providesRetrofit(): Retrofit {
-        return Retrofit.Builder().baseUrl(Constant.BASE_URL)
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
+        return Retrofit.Builder().baseUrl(Constant.BASE_URL).client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
+
     @Singleton
     @Provides
     fun providesFirebaseFunction(retrofit: Retrofit): firabse_funtion {
         return retrofit.create(firabse_funtion::class.java)
     }
+
     @Singleton
     @Provides
     fun provideFirebaseAuth(): FirebaseAuth {
         return FirebaseAuth.getInstance()
     }
+
     @Singleton
     @Provides
     fun provideSharedPreferencesManager(application: Application): SharedPreferencesManager {
         return SharedPreferencesManager.getInstance(application)
     }
+
     @Singleton
     @Provides
     fun provideContext(application: Application): Context {

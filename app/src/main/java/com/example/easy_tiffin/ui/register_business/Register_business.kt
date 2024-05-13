@@ -1,7 +1,6 @@
 package com.example.easy_tiffin.ui.register_business
 
 import android.os.Bundle
-
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
@@ -29,13 +28,14 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class Register_business : AppCompatActivity() {
-   // private lateinit var auth: FirebaseAuth
+    // private lateinit var auth: FirebaseAuth
     private lateinit var viewModel: BusinessViewModel
     private lateinit var placesClient: PlacesClient
     private lateinit var locationPredictor: LocationPredictor
     private lateinit var placeId: String
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     private lateinit var progressBarHandler: ProgressBarHandler
+
     @Inject
     lateinit var buisiness_Repository: BusinessRepository
 
@@ -57,8 +57,9 @@ class Register_business : AppCompatActivity() {
         }
 
 
-        viewModel = ViewModelProvider(this, BusinessViewModelFactory(buisiness_Repository))
-            .get(BusinessViewModel::class.java)
+        viewModel = ViewModelProvider(this, BusinessViewModelFactory(buisiness_Repository)).get(
+            BusinessViewModel::class.java
+        )
 
         // UI components
         val buttonRegisterBusiness: Button = findViewById(R.id.button_Register_buisiness)
@@ -80,7 +81,7 @@ class Register_business : AppCompatActivity() {
 //
 
             // Call ViewModel to add business details
-            viewModel.buisiness_validations(businessName,businessAddress)
+            viewModel.buisiness_validations(businessName, businessAddress)
         }
 
         // AutoCompleteTextView setup
@@ -105,19 +106,12 @@ class Register_business : AppCompatActivity() {
                 buttonRegisterBusiness.setText("Register Business Detail")
                 progressBarHandler.showLoading(false)
                 navigateToNextScreen()
-//                hideLoading()
-                // Handle success, navigate to the next screen if needed
-                // For example:
-                // startActivity(Intent(this, NextActivity::class.java))
             } else {
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 buttonRegisterBusiness.setText("Register Business Detail")
                 progressBarHandler.showLoading(false)
-
-                // Handle failure, show error message if needed
             }
         }
-        //viewModel.register_FormState.observe()
         viewModel.register_FormState.observe(this@Register_business, Observer {
             val loginState = it ?: return@Observer
 
@@ -172,6 +166,7 @@ class Register_business : AppCompatActivity() {
         Navigator.navigateTo(LoginActivity::class.java, this, finishCurrent = false)
 
     }
+
     private fun navigateToNextScreen() {
 
         Navigator.navigateTo(Dashboard::class.java, this, finishCurrent = true)

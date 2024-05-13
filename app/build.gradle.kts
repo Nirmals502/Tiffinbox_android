@@ -5,6 +5,8 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
+    id ("kotlin-parcelize")
+
 }
 
 android {
@@ -44,6 +46,7 @@ android {
     buildFeatures {
         compose = true
         viewBinding = true
+        dataBinding =true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -89,6 +92,7 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging:23.4.0")
     implementation("com.google.firebase:firebase-crashlytics:18.6.1")
     implementation("com.google.firebase:firebase-functions-ktx:20.4.0")
+    implementation("androidx.activity:activity:1.8.0")
 
     testImplementation ("androidx.arch.core:core-testing:2.1.0")
     implementation("androidx.annotation:annotation:1.7.0")
@@ -103,7 +107,7 @@ dependencies {
     testImplementation("org.mockito:mockito-all:1.8.4")
     testImplementation ("org.mockito:mockito-core:2.24.5")
     testImplementation ("org.mockito:mockito-inline:2.24.5")
-    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
+
 
     //stripe
     implementation ("com.stripe:stripe-android:20.37.1")
@@ -159,7 +163,7 @@ dependencies {
     testImplementation ("org.mockito:mockito-inline:4.5.1")
     testImplementation ("androidx.arch.core:core-testing:2.1.0")
     testImplementation ("org.robolectric:robolectric:4.11.1") // use the latest version
-
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")  // Or the latest version
 
 
 
