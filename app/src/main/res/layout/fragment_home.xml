@@ -1,24 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-
+    <!-- Text "My Food Menu" -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Orders"
+        android:layout_gravity="center_vertical|start"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="My Food Menu"
+        android:textColor="@color/teal_700"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- FrameLayout containing ViewPager and arrows -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <!-- ViewPager with arrows -->
+
+        <!-- Left arrow -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/quantum_lightgreen700" />
+
+        <ImageView
+            android:id="@+id/leftArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/baseline_arrow_back_ios_24" />
+
+        <!-- Right arrow -->
+        <ImageView
+            android:id="@+id/rightArrow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/baseline_arrow_forward_ios_24" />
+
+        <!-- TabLayout for dots -->
+        <!--  app:tabIndicator="@drawable/animated_tab_indicator"-->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/Transparent_black"
+            app:tabGravity="center"
+            app:tabIndicatorGravity="center"
+
+            app:tabTextColor="@color/disable_text" />
+
+    </FrameLayout>
+
+    <!-- Text "Orders" and RecyclerView below -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Today's Orders"
+
+        android:textColor="@color/teal_700"
         android:textSize="18sp"
         android:textStyle="bold" />
 
