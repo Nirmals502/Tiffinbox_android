@@ -29,4 +29,7 @@
         <item name="android:colorPrimary">#00397F</item>
         <item name="android:colorAccent">#0AAEEF</item>
     </style>
+    <style name="BottomNavigationViewStyle">
+        <item name="android:background">@color/teal_700</item> <item name="itemIconTint">#0AAEEF</item>  <item name="itemTextColor">#0AAEEF</item> <item name="itemRippleColor">#0AAEEF</item> </style>
+
 </resources>

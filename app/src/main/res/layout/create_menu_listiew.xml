@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="90dp"
     android:orientation="vertical"
     tools:context="com.example.easy_tiffin.ui.ui.dashboard.Dashboard">
 
@@ -13,7 +13,7 @@
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/stripe_paymentsheet_form_error"
+        android:background="@color/teal_200"
         android:orientation="vertical">
 
         <!-- Title TextView -->
@@ -47,6 +47,7 @@
             android:layout_centerInParent="false"
             android:layout_centerHorizontal="false"
             android:layout_centerVertical="true"
+            android:visibility="gone"
             app:srcCompat="@drawable/baseline_arrow_back_24" />
 
         <!-- Subtitle TextView -->
@@ -54,10 +55,10 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/headerLayout">
+        android:layout_below="@id/headerLayout"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mRecycler"
@@ -74,10 +75,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="190dp"
         android:background="@color/teal_200"
         android:contentDescription="Add Item"
         android:src="@drawable/ic_add_24dp"
         android:tint="@color/theme_color"
-        app:backgroundTint="@color/quantum_error_dark" />
+        app:backgroundTint="@color/teal_200" />
 
 </RelativeLayout>

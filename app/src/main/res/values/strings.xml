@@ -81,5 +81,11 @@
     <string name="transit_number_length_error">Transit number must be exactly 5 digits.</string>
     <string name="institution_number_length_error">Institution number must be exactly 3 digits.</string>
 
-
+    <string name="menu_sunday">Sunday Menu</string>
+    <string name="menu_monday">Monday Menu</string>
+    <string name="menu_tuesday">Tuesday Menu</string>
+    <string name="menu_wednesday">Wednesday Menu</string>
+    <string name="menu_thursday">Thursday Menu</string>
+    <string name="menu_friday">Friday Menu</string>
+    <string name="menu_saturday">Saturday Menu</string>
 </resources>

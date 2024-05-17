@@ -4,25 +4,26 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:tint="@color/white"
+        android:title="" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/baseline_margin_24"
-        android:title="@string/my_order" />
+        android:id="@+id/navigation_menu_creator"
+        android:icon="@drawable/menu_icon"
+        android:title="" />
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/baseline_favorite_border_24"
-        android:title="@string/favourites" />
+        android:icon="@drawable/baseline_attach_money_24"
+        android:title="" />
     <item
         android:id="@+id/navigation_inbox"
         android:icon="@drawable/baseline_inbox_24"
-        android:title="@string/inbox" />
+        android:title="" />
     <item
         android:id="@+id/navigation_Account"
         android:icon="@drawable/baseline_account_circle_24"
-        android:title="@string/account" />
+        android:title="" />
 
 
 </menu>

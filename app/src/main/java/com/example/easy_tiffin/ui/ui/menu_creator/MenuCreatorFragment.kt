@@ -1,55 +1,60 @@
-package com.example.easy_tiffin.ui.food_menu_creator_
+package com.example.easy_tiffin.ui.ui.menu_creator
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.easy_tiffin.R
+import com.example.easy_tiffin.ui.food_menu_creator_.UserAdapter
+import com.example.easy_tiffin.ui.food_menu_creator_.UserData
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class Menu_creater : AppCompatActivity() {
+class MenuCreatorFragment : Fragment() {
     private lateinit var addsBtn: FloatingActionButton
     private lateinit var recv: RecyclerView
     private lateinit var userList: ArrayList<UserData>
     private lateinit var userAdapter: UserAdapter
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.create_menu_listiew)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val root = inflater.inflate(R.layout.create_menu_listiew, container, false)
+
         /**set List*/
         userList = ArrayList()
         /**set find Id*/
-        addsBtn = findViewById(R.id.addingBtn)
-        recv = findViewById(R.id.mRecycler)
+        addsBtn = root.findViewById(R.id.addingBtn)
+        recv = root.findViewById(R.id.mRecycler)
         /**set Adapter*/
-        userAdapter = UserAdapter(this, userList)
+        userAdapter = UserAdapter(requireContext(), userList)
         /**setRecycler view Adapter*/
-        recv.layoutManager = LinearLayoutManager(this)
+        recv.layoutManager = LinearLayoutManager(requireContext())
         recv.adapter = userAdapter
         /**set Dialog*/
         addsBtn.setOnClickListener { addInfo() }
 
+        return root
     }
 
     private fun addInfo() {
-        val inflter = LayoutInflater.from(this)
+        val inflter = LayoutInflater.from(requireContext())
         val v = inflter.inflate(R.layout.add_item, null)
 
         /**set view*/
         val userName = v.findViewById<EditText>(R.id.userName)
-
         val spice_level = v.findViewById<RadioGroup>(R.id.spiceLevelGroup)
 
-
-        val addDialog = AlertDialog.Builder(this, R.style.AlertDialogTheme)
+        val addDialog = AlertDialog.Builder(requireContext(), R.style.AlertDialogTheme)
 
         addDialog.setView(v)
         addDialog.setPositiveButton("Ok") { dialog, _ ->
@@ -57,9 +62,9 @@ class Menu_creater : AppCompatActivity() {
                 val item = userName.text.toString()
 
                 val selectedSpiceLevelId = spice_level.checkedRadioButtonId
-                val selectedRadioButton = findViewById<RadioButton>(selectedSpiceLevelId)
+                val selectedRadioButton = v.findViewById<RadioButton>(selectedSpiceLevelId)
                 val selectedSpiceLevel = selectedRadioButton?.text.toString()
-                userList.add(UserData(item, "quantity",selectedSpiceLevel))
+                userList.add(UserData(item, "quantity", selectedSpiceLevel))
                 userAdapter.notifyDataSetChanged()
                 dialog.dismiss()
                 val userDataString = userList.joinToString(separator = "\n") { userData ->
@@ -70,10 +75,8 @@ class Menu_creater : AppCompatActivity() {
         }
         addDialog.setNegativeButton("Cancel") { dialog, _ ->
             dialog.dismiss()
-
         }
         addDialog.create()
         addDialog.show()
     }
-
 }

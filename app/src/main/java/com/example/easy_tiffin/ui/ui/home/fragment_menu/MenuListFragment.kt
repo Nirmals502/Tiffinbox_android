@@ -1,16 +1,18 @@
-package com.example.easy_tiffin.ui.ui.home
+package com.example.easy_tiffin.ui.ui.home.fragment_menu
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.easy_tiffin.R
 import com.easy_tiffin.databinding.FragmentMenuListBinding
+import com.example.easy_tiffin.ui.ui.home.adapter.MenuAdapter
+import com.example.easy_tiffin.ui.ui.home.model.MenuItem
+import com.example.easy_tiffin.ui.ui.home.model.MenuType
 
-class MenuListFragment : Fragment() {
+class MenuListFragment : Fragment(), android.view.MenuItem.OnMenuItemClickListener {
     private lateinit var binding: FragmentMenuListBinding
     private lateinit var menuType: MenuType
     private val adapter = MenuAdapter()
@@ -30,8 +32,9 @@ class MenuListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
+
     }
 
     companion object {
@@ -46,6 +49,24 @@ class MenuListFragment : Fragment() {
     }
 
     fun setMenuItems(items: List<MenuItem>) {
-        adapter.submitList(items)
+        Log.d("Check Value", "Filtered items for : $items")
+        //adapter.notifyDataSetChanged()
+        //adapter.submitList(emptyList())
+       // adapter.submitList(items)
+        adapter.submitList(emptyList()) {
+            adapter.submitList(items)
+        }
+        //adapter.submitList(emptyList())
+
+    }
+
+    fun clearMenuItems() {
+        adapter.submitList(emptyList())
+    }
+
+
+    override fun onMenuItemClick(item: android.view.MenuItem): Boolean {
+        TODO("Not yet implemented")
+        println("Clicked item ID: $item")
     }
 }

@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.easy_tiffin.ui.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_menu_creator"
+        android:name="com.example.easy_tiffin.ui.ui.menu_creator.MenuCreatorFragment"
+        android:label="Menu"
+        tools:layout="@layout/create_menu_listiew" />
 
     <fragment
         android:id="@+id/navigation_notifications"

@@ -1,4 +1,4 @@
-package com.example.easy_tiffin.ui.ui.home
+package com.example.easy_tiffin.ui.ui.home.adapter
 
 // CustomPagerAdapter.kt
 import android.view.LayoutInflater

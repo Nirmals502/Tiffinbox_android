@@ -13,30 +13,30 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="My Food Menu"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/teal_200"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <!-- FrameLayout containing ViewPager and arrows -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/container_round_corner">
 
         <!-- ViewPager with arrows -->
-
-        <!-- Left arrow -->
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/quantum_lightgreen700" />
+            android:layout_height="match_parent" />
 
+        <!-- Left arrow -->
         <ImageView
             android:id="@+id/leftArrow"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="start|center_vertical"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:src="@drawable/baseline_arrow_back_ios_24" />
 
         <!-- Right arrow -->
@@ -45,40 +45,51 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="end|center_vertical"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="5dp"
             android:src="@drawable/baseline_arrow_forward_ios_24" />
-
-        <!-- TabLayout for dots -->
-        <!--  app:tabIndicator="@drawable/animated_tab_indicator"-->
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/Transparent_black"
-            app:tabGravity="center"
-            app:tabIndicatorGravity="center"
-
-            app:tabTextColor="@color/disable_text" />
 
     </FrameLayout>
 
-    <!-- Text "Orders" and RecyclerView below -->
+    <!-- TabLayout for tabs -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/rectangle_border"
+        app:tabGravity="center"
+        app:tabIndicatorGravity="bottom"
+        app:tabTextColor="@color/white" />
+
+    <!-- Text "Today's Orders" -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="Today's Orders"
-
-        android:textColor="@color/teal_700"
+        android:textColor="@color/teal_200"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/orderListRecyclerView"
+    <!-- TabLayout for orders -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/ordersTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rectangle_border"
+        app:tabGravity="center"
+        app:tabIndicatorGravity="bottom"
+        app:tabTextColor="@color/white" />
+
+    <!-- New ViewPager2 for today's orders -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/ordersViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_marginBottom="30dp"
+        android:layout_weight="1"
+        android:background="@drawable/container_round_corner" />
 
 </LinearLayout>
