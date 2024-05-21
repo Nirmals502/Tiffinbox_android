@@ -5,10 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
+
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -51,20 +54,56 @@ class MenuCreatorFragment : Fragment() {
         val v = inflter.inflate(R.layout.add_item, null)
 
         /**set view*/
-        val userName = v.findViewById<EditText>(R.id.userName)
-        val spice_level = v.findViewById<RadioGroup>(R.id.spiceLevelGroup)
+        val Item_name = v.findViewById<AutoCompleteTextView>(R.id.itemNameAutoComplete)
 
         val addDialog = AlertDialog.Builder(requireContext(), R.style.AlertDialogTheme)
 
-        addDialog.setView(v)
-        addDialog.setPositiveButton("Ok") { dialog, _ ->
-            if (userName.text.toString().isNotEmpty()) {
-                val item = userName.text.toString()
+        addDialog.setCancelable(false)
 
-                val selectedSpiceLevelId = spice_level.checkedRadioButtonId
-                val selectedRadioButton = v.findViewById<RadioButton>(selectedSpiceLevelId)
-                val selectedSpiceLevel = selectedRadioButton?.text.toString()
-                userList.add(UserData(item, "quantity", selectedSpiceLevel))
+        addDialog.setView(v)
+        val foodItems = arrayOf(
+            // Appetizers
+            "Samosa", "Pakora", "Aloo Tikki", "Dhokla", "Kachori", "Paneer Tikka",
+            "Chicken Tikka", "Seekh Kebab", "Vada Pav", "Bhaji", "Fish Amritsari",
+            "Prawn Koliwada", "Aloo Chaat", "Chaat", "Bhel Puri", "Pani Puri",
+            "Dahi Puri", "Ragda Pattice", "Momos", "Samosa Chaat", "Papdi Chaat",
+            "Corn Chaat",
+
+            // Vegetarian Main Courses
+            "Paneer Butter Masala", "Chole Bhature", "Rajma", "Aloo Gobi",
+            "Baingan Bharta", "Palak Paneer", "Kadhai Paneer", "Dal Makhani",
+            "Malai Kofta", "Bhindi Masala", "Aloo Matar", "Mutter Paneer",
+            "Vegetable Jalfrezi", "Dum Aloo", "Chana Masala", "Paneer Tikka Masala",
+            "Aloo Baingan", "Aloo Palak", "Aloo Jeera", "Gutti Vankaya Kura",
+
+            // Non-Vegetarian Main Courses
+            "Butter Chicken", "Chicken Tikka Masala", "Tandoori Chicken",
+            "Rogan Josh", "Chicken Curry", "Lamb Vindaloo", "Fish Curry",
+            "Goan Prawn Curry", "Nihari", "Korma", "Chicken Chettinad",
+            "Biryani (Chicken/Mutton)", "Keema", "Mutton Curry", "Murgh Malaiwala",
+            "Egg Curry", "Fish Fry", "Prawn Masala", "Mutton Keema",
+
+            // Breads
+            "Naan", "Roti", "Paratha", "Puri", "Bhatura", "Kulcha",
+            "Lachha Paratha", "Thepla", "Missi Roti", "Makki di Roti",
+            "Roomali Roti", "Tandoori Roti",
+
+            // Rice Dishes
+            "Biryani", "Pulao", "Jeera Rice", "Khichdi", "Curd Rice",
+            "Lemon Rice", "Tamarind Rice", "Peas Pulao", "Coconut Rice",
+            "Kashmiri Pulao", "Bisi Bele Bath", "Vangi Bath", "Ghee Rice",
+
+            // Desserts
+            "Gulab Jamun"
+        )
+        val autoAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, foodItems)
+        Item_name.setAdapter(autoAdapter)
+        addDialog.setPositiveButton("Ok") { dialog, _ ->
+            if (Item_name.text.toString().isNotEmpty()) {
+                val item = Item_name.text.toString()
+
+                userList.add(UserData(item, "quantity", "selectedSpiceLevel"))
                 userAdapter.notifyDataSetChanged()
                 dialog.dismiss()
                 val userDataString = userList.joinToString(separator = "\n") { userData ->
@@ -77,6 +116,7 @@ class MenuCreatorFragment : Fragment() {
             dialog.dismiss()
         }
         addDialog.create()
+
         addDialog.show()
     }
 }

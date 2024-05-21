@@ -88,4 +88,18 @@
     <string name="menu_thursday">Thursday Menu</string>
     <string name="menu_friday">Friday Menu</string>
     <string name="menu_saturday">Saturday Menu</string>
+
+    <string-array name="package_titles">
+        <item>Please select a package</item>
+        <item>Basic Meal Package</item>
+        <item>Standard Meal Package</item>
+        <item>Deluxe Meal Package</item>
+        <item>Vegetarian Delight</item>
+        <item>Non-Vegetarian Special</item>
+        <item>Weekly Combo</item>
+        <item>Monthly Combo</item>
+        <item>Healthy Meal Plan</item>
+        <item>Family Feast</item>
+        <item>Executive Lunch</item>
+    </string-array>
 </resources>

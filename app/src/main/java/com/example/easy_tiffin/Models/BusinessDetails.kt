@@ -3,7 +3,6 @@ package com.example.easy_tiffin.Models
 data class BusinessDetails(
     val businessName: String,
     val Address: String,
-
     val gst: String,
     val Userid: String,
     val createdAt: String,

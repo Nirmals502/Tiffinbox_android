@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,9 +41,8 @@ class food_menu_creator : AppCompatActivity() {
         val v = inflter.inflate(R.layout.activity_menu_creater, null)
 
         /**set view*/
-        val userName = v.findViewById<EditText>(R.id.userName)
+        val userName = v.findViewById<EditText>(R.id.quantity_)
 
-        val spice_level = v.findViewById<RadioGroup>(R.id.spiceLevelGroup)
 
 
         val addDialog = AlertDialog.Builder(this, R.style.AlertDialogTheme)
@@ -56,10 +52,7 @@ class food_menu_creator : AppCompatActivity() {
             if (userName.text.toString().isNotEmpty()) {
                 val item = userName.text.toString()
 
-                val selectedSpiceLevelId = spice_level.checkedRadioButtonId
-                val selectedRadioButton = findViewById<RadioButton>(selectedSpiceLevelId)
-                val selectedSpiceLevel = selectedRadioButton?.text.toString()
-                userList.add(UserData(item, "quantity",selectedSpiceLevel))
+                userList.add(UserData(item, "quantity","selectedSpiceLevel"))
                 userAdapter.notifyDataSetChanged()
                 dialog.dismiss()
                 val userDataString = userList.joinToString(separator = "\n") { userData ->

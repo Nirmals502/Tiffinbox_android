@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.easy_tiffin.R
@@ -44,9 +41,8 @@ class Menu_creater : AppCompatActivity() {
         val v = inflter.inflate(R.layout.add_item, null)
 
         /**set view*/
-        val userName = v.findViewById<EditText>(R.id.userName)
+        val userName = v.findViewById<EditText>(R.id.itemNameAutoComplete)
 
-        val spice_level = v.findViewById<RadioGroup>(R.id.spiceLevelGroup)
 
 
         val addDialog = AlertDialog.Builder(this, R.style.AlertDialogTheme)
@@ -56,10 +52,7 @@ class Menu_creater : AppCompatActivity() {
             if (userName.text.toString().isNotEmpty()) {
                 val item = userName.text.toString()
 
-                val selectedSpiceLevelId = spice_level.checkedRadioButtonId
-                val selectedRadioButton = findViewById<RadioButton>(selectedSpiceLevelId)
-                val selectedSpiceLevel = selectedRadioButton?.text.toString()
-                userList.add(UserData(item, "quantity",selectedSpiceLevel))
+                userList.add(UserData(item, "quantity","selectedSpiceLevel"))
                 userAdapter.notifyDataSetChanged()
                 dialog.dismiss()
                 val userDataString = userList.joinToString(separator = "\n") { userData ->

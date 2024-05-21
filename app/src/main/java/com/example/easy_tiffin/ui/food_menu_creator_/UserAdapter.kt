@@ -34,10 +34,10 @@ class UserAdapter(val c: Context, val userList: ArrayList<UserData>) :
                 when (it.itemId) {
                     R.id.editText -> {
                         val v = LayoutInflater.from(c).inflate(R.layout.add_item, null)
-                        val name = v.findViewById<EditText>(R.id.userName)
+                        val name = v.findViewById<EditText>(R.id.quantity_)
                         val number = v.findViewById<EditText>(R.id.userNo)
                         val editText_item: EditText =
-                            v.findViewById(R.id.userName) // Assuming R.id.userName is the ID of your EditText
+                            v.findViewById(R.id.quantity_) // Assuming R.id.userName is the ID of your EditText
 
                         editText_item.setText(position.item_name)
                         val editText_quantity: EditText =

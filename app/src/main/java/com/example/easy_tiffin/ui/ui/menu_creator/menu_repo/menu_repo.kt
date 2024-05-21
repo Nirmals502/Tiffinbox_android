@@ -149,6 +149,16 @@ class menu_repo : MenuRepository {
             MenuItem_("122", "Buttermilk"),
             MenuItem_("123", "Saffron Milk")
         )
+//        Standard Veg Package
+//        Deluxe Veg Package
+//        Standard Non-Veg Package
+//                Deluxe Non-Veg Package
+//                Family Veg Package
+//        Family Non-Veg Package
+//                Office Lunch Pack
+//        Office Dinner Pack
+//        Healthy Veg Pack
+//        Healthy Non-Veg Pack
 
     }
 }

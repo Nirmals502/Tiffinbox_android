@@ -146,7 +146,7 @@ class Register_business : AppCompatActivity() {
                     updatedAt = TimestampFormatter.getFormattedTimestamp(),
                     status = "Active",
                     Phone = phone.toString(),
-                    Place_ID = placeId
+                    Place_ID = "placeId"
                 )
 
                 // Call ViewModel to add business details
