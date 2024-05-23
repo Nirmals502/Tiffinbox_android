@@ -102,4 +102,18 @@
         <item>Family Feast</item>
         <item>Executive Lunch</item>
     </string-array>
+
+    <string-array name="days_selection">
+        <item>Select Days</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+        <item>Mon to Fri</item>
+        <item>Mon to Sat</item>
+        <item>Mon to Sun</item>
+    </string-array>
 </resources>

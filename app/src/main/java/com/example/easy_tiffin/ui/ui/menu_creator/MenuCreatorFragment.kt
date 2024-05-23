@@ -1,16 +1,22 @@
 package com.example.easy_tiffin.ui.ui.menu_creator
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.getSystemService
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +31,10 @@ class MenuCreatorFragment : Fragment() {
     private lateinit var recv: RecyclerView
     private lateinit var userList: ArrayList<UserData>
     private lateinit var userAdapter: UserAdapter
+    private lateinit var Item_name: AutoCompleteTextView
+    private lateinit var quantity: EditText
+    private lateinit var Recycler_: RecyclerView
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,13 +64,19 @@ class MenuCreatorFragment : Fragment() {
         val v = inflter.inflate(R.layout.add_item, null)
 
         /**set view*/
-        val Item_name = v.findViewById<AutoCompleteTextView>(R.id.itemNameAutoComplete)
+        Item_name = v.findViewById<AutoCompleteTextView>(R.id.itemNameAutoComplete)
+        quantity = v.findViewById<EditText>(R.id.userNo)
+        val Done_ = v.findViewById<ImageButton>(R.id.doneButton)
+        Recycler_ = v.findViewById<
+                RecyclerView>(R.id.mRecycler)
 
         val addDialog = AlertDialog.Builder(requireContext(), R.style.AlertDialogTheme)
 
         addDialog.setCancelable(false)
 
         addDialog.setView(v)
+
+
         val foodItems = arrayOf(
             // Appetizers
             "Samosa", "Pakora", "Aloo Tikki", "Dhokla", "Kachori", "Paneer Tikka",
@@ -99,7 +115,20 @@ class MenuCreatorFragment : Fragment() {
         val autoAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, foodItems)
         Item_name.setAdapter(autoAdapter)
-        addDialog.setPositiveButton("Ok") { dialog, _ ->
+
+
+        Done_.setOnClickListener(View.OnClickListener {
+            if (Item_name.text.toString().isNotEmpty()) {
+                showDaySelectorDialog(Item_name.text.toString(), quantity.text.toString())
+                val imm =
+                    requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(it.windowToken, 0)
+
+                // Recycler_.adapter = userAdapter
+                //Recycler_.visibility = Vis
+            }
+        })
+        addDialog.setPositiveButton("Add Menu") { dialog, _ ->
             if (Item_name.text.toString().isNotEmpty()) {
                 val item = Item_name.text.toString()
 
@@ -119,4 +148,47 @@ class MenuCreatorFragment : Fragment() {
 
         addDialog.show()
     }
+
+    private fun showDaySelectorDialog(Item_name_: String, Quantity: String) {
+        val inflter = LayoutInflater.from(requireContext())
+        val v = inflter.inflate(R.layout.dialog_day_selector, null)
+
+        val addDialog = AlertDialog.Builder(requireContext(), R.style.AlertDialogTheme)
+
+        addDialog.setCancelable(false)
+
+        addDialog.setView(v)
+
+
+
+        addDialog.setPositiveButton("Ok") { dialog, _ ->
+
+
+            userList.add(UserData(Item_name_, Quantity, "selectedSpiceLevel"))
+            userAdapter.notifyDataSetChanged()
+            //dialog.dismiss()
+            val userDataString = userList.joinToString(separator = "\n") { userData ->
+                "${userData.quantity} ${userData.item_name} ${userData.spice_level}"
+            }
+            Log.d("UserDataList", userDataString)
+            Item_name.setText("");
+            quantity.setText("");
+            // Hide the keyboard
+
+
+            userAdapter = UserAdapter(requireContext(), userList)
+            /**setRecycler view Adapter*/
+            Recycler_.layoutManager = LinearLayoutManager(requireContext())
+            (Recycler_.layoutManager as LinearLayoutManager).reverseLayout = true
+            Recycler_.adapter = userAdapter
+
+        }
+        addDialog.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        addDialog.show()
+
+    }
+
 }
