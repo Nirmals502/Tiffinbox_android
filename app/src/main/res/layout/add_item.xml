@@ -2,199 +2,313 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#353A3A"
     android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/transparent_color"
-            android:elevation="15dp"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="Add Food Item"
-            android:textColor="@color/teal_700"
-            android:textSize="19sp"
-            android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:orientation="vertical">
 
-            <!-- Title TextView -->
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Select your package"
-                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:background="@color/transparent_color"
+                android:elevation="15dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Add Food Item"
+                android:textColor="@color/white"
+                android:textSize="19sp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <Spinner
-                    android:id="@+id/spinnerPackageTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="2.5"
-                    android:background="@drawable/container_round_corner"
-                    android:entries="@array/package_titles" />
+                <!-- Title TextView -->
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="$"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/priceEditText"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_weight="0.9"
-                    android:background="@drawable/container_round_corner"
-                    android:hint="Price"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="Select your package"
+                        android:textColor="@color/white"
+
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupCategory"
+                        style="@style/CustomCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:checkedButton="@id/radioButtonVeg"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonVeg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+
+                            android:checked="false"
+                            android:text="Veg"
+                            android:textColor="@color/white" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonNonVeg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+
+                            android:text="Non-Veg"
+                            android:textColor="@color/white" />
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinnerPackageTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="2.5"
+                        android:textColor="@color/white"
+
+                        android:background="@drawable/container_round_corner"
+                        android:entries="@array/package_titles" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/white"
+
+                        android:text="$"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/priceEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/container_round_corner"
+                        android:hint="Price"
+                        android:inputType="numberDecimal"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#C3B4B4"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
+            <!-- Time Range Selection -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:paddingTop="1dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="Category"
+                    android:text="Select Meal Time"
+                    android:textColor="@color/white"
+
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <RadioGroup
-                    android:id="@+id/radioGroupCategory"
+                    android:id="@+id/radioGroupMealType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/transparent_color"
-                    android:backgroundTintMode="add"
-                    android:checkedButton="@id/radioButtonNonVeg"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+
+                    android:orientation="horizontal"
+                    android:paddingTop="1dp">
 
                     <RadioButton
-                        android:id="@+id/radioButtonVeg"
+                        android:id="@+id/radioButtonBreakfast"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
 
-                        android:backgroundTint="@color/black"
-                        android:checked="false"
-                        android:text="Veg" />
+                        android:text="Breakfast" />
 
                     <RadioButton
-                        android:id="@+id/radioButtonNonVeg"
+                        android:id="@+id/radioButtonLunch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/black"
-                        android:buttonTint="#3E2B2B"
-                        android:text="Non-Veg" />
+                        android:textColor="@color/white"
+
+                        android:text="Lunch" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonDinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+
+                        android:text="Dinner" />
                 </RadioGroup>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="1dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:textColor="@color/white"
+
+                        android:text="From"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/buttonStartTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/container_round_corner"
+                        android:text="Select Time"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:textColor="@color/white"
+
+                        android:text="To"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/buttonEndTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/container_round_corner"
+                        android:text="Select Time"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
             </LinearLayout>
-        </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Title TextView -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Add your item"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <!-- LinearLayout containing AutoCompleteTextView, EditText, and ImageButton -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <AutoCompleteTextView
-                    android:id="@+id/itemNameAutoComplete"
-                    android:layout_width="0dp"
+                <!-- Title TextView -->
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
-                    android:background="@drawable/container_round_corner"
-                    android:hint="Item Name"
-                    android:inputType="textPersonName"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Add your item"
+                    android:textColor="@color/white"
+
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/userNo"
-                    android:layout_width="0dp"
+                <!-- LinearLayout containing AutoCompleteTextView, EditText, and ImageButton -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.4"
-                    android:background="@drawable/container_round_corner"
-                    android:hint="Quantity"
-                    android:inputType="number"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/doneButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/ic_done"
-                    android:padding="10dp"
-                    android:text="Done"
-                    android:textColor="@color/teal_700"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <AutoCompleteTextView
+                        android:id="@+id/itemNameAutoComplete"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/container_round_corner"
+                        android:hint="Item Name"
+                        android:inputType="textPersonName"
+                        android:textColorHint="#F1DEDE"
+
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/userNo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="0.4"
+                        android:background="@drawable/container_round_corner"
+                        android:hint="Quantity"
+                        android:inputType="number"
+                        android:textColorHint="#F1DEDE"
+
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/doneButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/ic_done"
+                        android:padding="10dp"
+                        android:text="Done"
+                        android:textColor="@color/teal_700"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
         </LinearLayout>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
-
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

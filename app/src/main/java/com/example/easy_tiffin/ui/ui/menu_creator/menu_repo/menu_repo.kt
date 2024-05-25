@@ -5,11 +5,11 @@ import com.example.easy_tiffin.ui.ui.home.model.MenuType
 import com.example.easy_tiffin.ui.ui.menu_creator.model.MenuItem_
 
 
-interface MenuRepository {
+interface menu_repo_ {
     suspend fun getMenuItems(): List<MenuItem_>
 }
 
-class menu_repo : MenuRepository {
+class menu_repo : menu_repo_ {
     override suspend fun getMenuItems(): List<MenuItem_> {
         return listOf(
             // Snacks and Appetizers
