@@ -5,7 +5,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
-    id ("kotlin-parcelize")
+    id("kotlin-parcelize")
 
 }
 
@@ -46,7 +46,7 @@ android {
     buildFeatures {
         compose = true
         viewBinding = true
-        dataBinding =true
+        dataBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -84,7 +84,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.10.0")
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
 
-    implementation ("com.google.android.libraries.places:places:2.5.0")
+    implementation("com.google.android.libraries.places:places:2.5.0")
 
     ////
 
@@ -94,7 +94,7 @@ dependencies {
     implementation("com.google.firebase:firebase-functions-ktx:20.4.0")
     implementation("androidx.activity:activity:1.8.0")
 
-    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
     implementation("androidx.annotation:annotation:1.7.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -103,19 +103,14 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    testImplementation ("io.mockk:mockk:1.12.0")
+    testImplementation("io.mockk:mockk:1.12.0")
     testImplementation("org.mockito:mockito-all:1.8.4")
-    testImplementation ("org.mockito:mockito-core:2.24.5")
-    testImplementation ("org.mockito:mockito-inline:2.24.5")
+    testImplementation("org.mockito:mockito-core:2.24.5")
+    testImplementation("org.mockito:mockito-inline:2.24.5")
 
 
     //stripe
-    implementation ("com.stripe:stripe-android:20.37.1")
-
-
-
-
-
+    implementation("com.stripe:stripe-android:20.37.1")
 
 
 //    val dagger_version = "2.41"
@@ -145,26 +140,25 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
 
     //Country picker
-    implementation ("com.hbb20:ccp:2.5.1")
+    implementation("com.hbb20:ccp:2.5.1")
 
-    implementation ("com.github.ozcanalasalvar:otpview:2.0.1")
+    implementation("com.github.ozcanalasalvar:otpview:2.0.1")
 
     //For view based UI's
-    implementation ("androidx.compose.material3:material3:Tag")
+    implementation("androidx.compose.material3:material3:Tag")
 
     //Facebook
-    implementation ("com.facebook.android:facebook-login:latest.release")
+    implementation("com.facebook.android:facebook-login:latest.release")
 
 //unit Testing
-    testImplementation ("junit:junit:4.13.2")
-    testImplementation ("org.mockito:mockito-core:5.10.0")
-    testImplementation ("org.mockito.kotlin:mockito-kotlin:4.0.0") // use the latest version
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:5.10.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0") // use the latest version
 
-    testImplementation ("org.mockito:mockito-inline:4.5.1")
-    testImplementation ("androidx.arch.core:core-testing:2.1.0")
-    testImplementation ("org.robolectric:robolectric:4.11.1") // use the latest version
+    testImplementation("org.mockito:mockito-inline:4.5.1")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+    testImplementation("org.robolectric:robolectric:4.11.1") // use the latest version
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")  // Or the latest version
-
 
 
 }

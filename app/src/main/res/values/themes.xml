@@ -5,12 +5,19 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.AppCompat.Light.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">#8BC34A</item>
-        <item name="android:alertDialogTheme">@style/AlertDialogCustom</item>
-
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/accentColor</item>
+        <!-- Background color. -->
+        <item name="android:windowBackground">@color/backgroundColor</item>
+        <!-- Text colors. -->
+        <item name="android:textColorPrimary">@color/textColor</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColor</item>
+        <!-- Custom RadioButton style -->
+        <item name="android:radioButtonStyle">@style/CustomRadioButton</item>
     </style>
 
-    <style name="Theme.AppCompat.Light.NoActionBar" parent="Base.Theme.AppCompat.Light.NoActionBar" />
+
 
     <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
         <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
@@ -26,7 +33,7 @@
     </style>
 
     <style name="AlertDialogCustom" parent="android:Theme.Material.Light.Dialog.Alert">
-        <item name="android:colorPrimary">#00397F</item>
+        <item name="android:colorPrimary">#F2F5F8</item>
         <item name="android:colorAccent">#0AAEEF</item>
     </style>
 
@@ -42,6 +49,7 @@
     </style>
 
     <style name="CustomRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="android:buttonTint">@color/colorAccent</item>
+        <item name="android:buttonTint">@color/Button_text</item>
+        <item name="android:textColor">@color/checked_color</item>
     </style>
 </resources>

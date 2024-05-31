@@ -89,8 +89,18 @@
     <string name="menu_friday">Friday Menu</string>
     <string name="menu_saturday">Saturday Menu</string>
 
+    <string name="profile_image_desc">Profile Image</string>
+    <string name="profile_name">Your Name</string>
+    <string name="profile_email">your.email@example.com</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="settings">Settings</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="notification_settings">Notification Settings</string>
+    <string name="privacy_settings">Privacy Settings</string>
+    <string name="logout">Logout</string>
+
     <string-array name="package_titles">
-        <item>Please select a package</item>
+        <item>B</item>
         <item>Basic Meal Package</item>
         <item>Standard Meal Package</item>
         <item>Deluxe Meal Package</item>

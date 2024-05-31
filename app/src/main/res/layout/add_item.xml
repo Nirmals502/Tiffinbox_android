@@ -2,7 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#353A3A"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -26,7 +25,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Add Food Item"
-                android:textColor="@color/white"
+                android:textColor="@color/Button_text"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -49,38 +48,35 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:text="Select your package"
-                        android:textColor="@color/white"
+                        android:textColor="@color/Button_text"
 
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <RadioGroup
                         android:id="@+id/radioGroupCategory"
-                        style="@style/CustomCheckBox"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:checkedButton="@id/radioButtonVeg"
+                        android:button="@drawable/checkbox_selector"
                         android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/radioButtonVeg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/white"
 
-                            android:checked="false"
                             android:text="Veg"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/Button_text" />
 
                         <RadioButton
                             android:id="@+id/radioButtonNonVeg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/white"
 
                             android:text="Non-Veg"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/Button_text" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -91,23 +87,27 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <Spinner
+                    <AutoCompleteTextView
                         android:id="@+id/spinnerPackageTitle"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="2.5"
-                        android:textColor="@color/white"
-
                         android:background="@drawable/container_round_corner"
-                        android:entries="@array/package_titles" />
+                        android:entries="@array/package_titles"
+                        android:hint="Please select a package"
+                        android:inputType="textPersonName"
+                        android:padding="10dp"
+                        android:textColor="@color/Button_text"
+                        android:textColorHint="#F1DEDE" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:textColor="@color/white"
-
                         android:text="$"
+
+
+                        android:textColor="@color/Button_text"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -124,7 +124,8 @@
                         android:hint="Price"
                         android:inputType="numberDecimal"
                         android:padding="10dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/Button_text"
+
                         android:textColorHint="#C3B4B4"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -145,7 +146,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Select Meal Time"
-                    android:textColor="@color/white"
+                    android:textColor="@color/Button_text"
+
 
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -155,34 +157,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textColor="@color/white"
-
                     android:orientation="horizontal"
-                    android:paddingTop="1dp">
+
+                    android:paddingTop="1dp"
+                    android:textColor="@color/Button_text">
 
                     <RadioButton
                         android:id="@+id/radioButtonBreakfast"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:text="Breakfast"
 
-                        android:text="Breakfast" />
+
+                        android:textColor="@color/Button_text" />
 
                     <RadioButton
                         android:id="@+id/radioButtonLunch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:text="Lunch"
 
-                        android:text="Lunch" />
+
+                        android:textColor="@color/Button_text" />
 
                     <RadioButton
                         android:id="@+id/radioButtonDinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:text="Dinner"
 
-                        android:text="Dinner" />
+
+                        android:textColor="@color/Button_text" />
                 </RadioGroup>
 
                 <LinearLayout
@@ -196,9 +201,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
-                        android:textColor="@color/white"
-
                         android:text="From"
+
+
+                        android:textColor="@color/Button_text"
                         android:textSize="16sp" />
 
                     <Button
@@ -208,7 +214,8 @@
                         android:layout_weight="1"
                         android:background="@drawable/container_round_corner"
                         android:text="Select Time"
-                        android:textColor="@color/white"
+                        android:textColor="@color/Button_text"
+
                         android:textSize="16sp" />
 
                     <TextView
@@ -216,9 +223,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
-                        android:textColor="@color/white"
-
                         android:text="To"
+
+
+                        android:textColor="@color/Button_text"
                         android:textSize="16sp" />
 
                     <Button
@@ -228,7 +236,8 @@
                         android:layout_weight="1"
                         android:background="@drawable/container_round_corner"
                         android:text="Select Time"
-                        android:textColor="@color/white"
+                        android:textColor="@color/Button_text"
+
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -246,7 +255,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:text="Add your item"
-                    android:textColor="@color/white"
+                    android:textColor="@color/Button_text"
+
 
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -267,10 +277,11 @@
                         android:background="@drawable/container_round_corner"
                         android:hint="Item Name"
                         android:inputType="textPersonName"
+                        android:padding="10dp"
+
+                        android:textColor="@color/Button_text"
                         android:textColorHint="#F1DEDE"
 
-                        android:padding="10dp"
-                        android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -283,10 +294,11 @@
                         android:background="@drawable/container_round_corner"
                         android:hint="Quantity"
                         android:inputType="number"
+                        android:padding="10dp"
+
+                        android:textColor="@color/Button_text"
                         android:textColorHint="#F1DEDE"
 
-                        android:padding="10dp"
-                        android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -298,7 +310,8 @@
                         android:background="@drawable/ic_done"
                         android:padding="10dp"
                         android:text="Done"
-                        android:textColor="@color/teal_700"
+                        android:textColor="@color/Button_text"
+
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.easy_tiffin.ui.ui.menu_creator.view_model
 
+import android.app.TimePickerDialog
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,8 +8,10 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -25,6 +28,7 @@ import com.example.easy_tiffin.ui.food_menu_creator_.UserAdapter
 import com.example.easy_tiffin.ui.ui.menu_creator.menu_repo.menu_repo_
 import com.example.easy_tiffin.ui.ui.menu_creator.model.MenuItem_
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class Menu_Viewmodel(private val repository: menu_repo_) : ViewModel() {
 
@@ -34,6 +38,7 @@ class Menu_Viewmodel(private val repository: menu_repo_) : ViewModel() {
     private lateinit var userList: ArrayList<UserData>
     private lateinit var food_menu: ArrayList<MenuItem_>
     private lateinit var userAdapter: UserAdapter
+    private lateinit var dialog: AlertDialog
     private var foodItemss: Array<String> = arrayOf()
     private val _menuItems = MutableLiveData<List<MenuItem_>>()
     val menuItems: LiveData<List<MenuItem_>> get() = _menuItems
@@ -64,6 +69,8 @@ class Menu_Viewmodel(private val repository: menu_repo_) : ViewModel() {
         val Done_ = v.findViewById<ImageButton>(R.id.doneButton)
         Recycler_ = v.findViewById<
                 RecyclerView>(R.id.mRecycler)
+        val buttonStartTime = v.findViewById<Button>(R.id.buttonStartTime)
+        val buttonEndTime = v.findViewById<Button>(R.id.buttonEndTime)
         menuItems.observe(context as LifecycleOwner) { menuItems ->
             foodItemss = menuItems.map { it.name }.toTypedArray()
             // Update your adapter with the new data
@@ -94,11 +101,26 @@ class Menu_Viewmodel(private val repository: menu_repo_) : ViewModel() {
 
 
             }
+
+
+
         })
+        buttonStartTime.setOnClickListener {
+            showTimePickerDialog(context) { selectedTime ->
+                buttonStartTime.text = selectedTime
+            }
+        }
+
+        // Show TimePickerDialog when buttonEndTime is clicked
+        buttonEndTime.setOnClickListener {
+            showTimePickerDialog(context) { selectedTime ->
+                buttonEndTime.text = selectedTime
+            }
+        }
 
         addDialog.setPositiveButton("Add Menu") { dialog, _ ->
 
-            if (Item_name.text.toString().isNotEmpty()) {
+            if (userList.isNotEmpty()) {
                 val item = Item_name.text.toString()
 
                 userList.add(UserData(item, "quantity", "selectedSpiceLevel"))
@@ -109,17 +131,20 @@ class Menu_Viewmodel(private val repository: menu_repo_) : ViewModel() {
                     "${userData.quantity} ${userData.item_name} ${userData.spice_level}"
                 }
                 Log.d("UserDataList", userDataString)
+            }else{
+
             }
         }
         addDialog.setNegativeButton("Cancel") { dialog, _ ->
             dialog.dismiss()
         }
-        val dialog = addDialog.create()
+        dialog = addDialog.create()
 
-        dialog.setOnShowListener {
-            val addButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-            addButton.isEnabled = false
-        }
+
+//        dialog.setOnShowListener {
+//            val addButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+//            addButton.isEnabled = false
+//        }
         //addDialog.create()
 
         dialog.show()
@@ -154,6 +179,9 @@ class Menu_Viewmodel(private val repository: menu_repo_) : ViewModel() {
             (Recycler_.layoutManager as LinearLayoutManager).reverseLayout = true
             Recycler_.adapter = userAdapter
 
+
+
+
         }
         addDialog.setNegativeButton("Cancel") { dialog, _ ->
             dialog.dismiss()
@@ -162,4 +190,26 @@ class Menu_Viewmodel(private val repository: menu_repo_) : ViewModel() {
         addDialog.show()
 
     }
+
+    private fun showTimePickerDialog(context: Context, onTimeSelected: (String) -> Unit) {
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val minute = calendar.get(Calendar.MINUTE)
+
+        val timePickerDialog = TimePickerDialog(context, { _, selectedHour, selectedMinute ->
+            val isPM = selectedHour >= 12
+            val hourIn12Format = if (selectedHour % 12 == 0) 12 else selectedHour % 12
+            val time = String.format(
+                "%02d:%02d %s",
+                hourIn12Format,
+                selectedMinute,
+                if (isPM) "PM" else "AM"
+            )
+            onTimeSelected(time)
+        }, hour, minute, false) // Set is24HourView to false for AM/PM format
+
+        timePickerDialog.show()
+    }
+
+
 }

@@ -16,4 +16,12 @@
     <color name="selected_tab_color">#FF0000</color> <!-- Adjust as needed -->
     <color name="unselected_tab_color">#CCCCCC</color>
     <color name="halfTransparentWhite">#80FFFFFF</color><!-- Adjust as needed -->
+    <color name="checked_color">#FF0000</color> <!-- Example checked color -->
+    <color name="unchecked_color">#00FF00</color> <!-- Example unchecked color -->
+    <color name="primaryColor">#FF5722</color>
+    <color name="primaryDarkColor">#E64A19</color>
+    <color name="accentColor">#4CAF50</color>
+    <color name="backgroundColor">#FAFAFA</color>
+    <color name="textColor">#212121</color>
+    <color name="secondaryTextColor">#757575</color>
 </resources>
